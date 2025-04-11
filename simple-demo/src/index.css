@@ -1092,6 +1092,24 @@ textarea.form-control {
 
 /* Animated Headings */
 .animated-heading {
+  background: linear-gradient(45deg, var(--primary-gold), var(--primary-maroon), var(--primary-dark));
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: gradient 3s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.section-title.animated-heading {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
   background: linear-gradient(90deg, var(--primary-gold), var(--primary-maroon), var(--primary-blue), var(--primary-pink));
   background-size: 300% 300%;
   -webkit-background-clip: text;

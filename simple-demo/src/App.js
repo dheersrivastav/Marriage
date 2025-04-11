@@ -26,8 +26,8 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   
   // Wedding video URLs
-  const heroVideoUrl = "https://player.vimeo.com/progressive_redirect/playback/731930003/rendition/1080p/file.mp4?loc=external";
-  const middleVideoUrl = "https://player.vimeo.com/progressive_redirect/playback/783455773/rendition/1080p/file.mp4?loc=external";
+  const heroVideoUrl = "https://cdn.coverr.co/videos/coverr-an-indian-wedding-ceremony-2683/1080p.mp4";
+  const middleVideoUrl = "https://cdn.coverr.co/videos/coverr-traditional-indian-wedding-4386/1080p.mp4";
   // Fallback image if video can't load
   const fallbackImageUrl = "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80";
   
@@ -480,6 +480,8 @@ function App() {
             </section>
           } />
           <Route path="/services/:serviceId" element={<ServiceDetail />} />
+          <Route path="/services/corporate" element={<ServiceDetail />} />
+          <Route path="/services/destination" element={<ServiceDetail />} />
         </Routes>
 
         {/* Footer with Gradient Background */}
