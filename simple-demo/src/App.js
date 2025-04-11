@@ -24,13 +24,13 @@ import Contact from './pages/Contact';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  
+
   // Wedding video URLs
   const heroVideoUrl = "https://cdn.coverr.co/videos/coverr-wedding-venue-decoration-3219/1080p.mp4";
-  const middleVideoUrl = "https://cdn.coverr.co/videos/coverr-wedding-decoration-setup-4827/1080p.mp4";
+  const middleVideoUrl = "https://youtu.be/JNKZN8uq1H8?si=if9hPxFc7pGpHBwa"; // Updated video URL
   // Fallback image if video can't load
   const fallbackImageUrl = "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80";
-  
+
   // Text animation variants
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -43,7 +43,7 @@ function App() {
       }
     }
   };
-  
+
   const staggerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -53,7 +53,7 @@ function App() {
       }
     }
   };
-  
+
   useEffect(() => {
     // Apply dark mode class to body when state changes
     if (isDarkMode) {
@@ -62,7 +62,7 @@ function App() {
       document.body.classList.remove('dark-mode');
     }
   }, [isDarkMode]);
-  
+
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
@@ -72,17 +72,17 @@ function App() {
       <div className={`app ${isDarkMode ? 'dark-mode' : ''}`}>
         {/* Theme Toggle Button */}
         <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-        
+
         {/* WhatsApp Floating Button for quick contact */}
         <WhatsAppButton 
           phoneNumber="7318444187"
           message="Hello! I'm interested in discussing my event planning needs. Please contact me."
           position="bottom-right"
         />
-        
+
         {/* Toast Container for Notifications */}
         <ToastContainer />
-        
+
         {/* Navbar/Header */}
         <motion.header 
           className="header"
@@ -116,7 +116,7 @@ function App() {
                 </motion.li>
               </ul>
             </nav>
-            
+
             {/* Mobile Navigation */}
             <MobileNav />
           </div>
@@ -129,7 +129,7 @@ function App() {
               <section id="home" className="hero">
                 {/* Video Background Component */}
                 <VideoBackground videoUrl={heroVideoUrl} fallbackImageUrl={fallbackImageUrl} />
-                
+
                 <div className="container hero-content">
                   <motion.h1 
                     variants={textVariants}
@@ -198,7 +198,7 @@ function App() {
                         </Link>
                       </div>
                     </motion.div>
-                    
+
                     <motion.div 
                       className="service-card"
                       variants={textVariants}
@@ -217,7 +217,7 @@ function App() {
                         </Link>
                       </div>
                     </motion.div>
-                    
+
                     <motion.div 
                       className="service-card"
                       variants={textVariants}
@@ -278,7 +278,7 @@ function App() {
                         "ShubhUtsav transformed our wedding into a magical experience. Their attention to detail and creative ideas made our day truly special. The mehndi and haldi ceremonies were beautifully arranged!"
                       </p>
                     </motion.div>
-                    
+
                     <motion.div 
                       className="testimonial-card"
                       variants={textVariants}
@@ -298,7 +298,7 @@ function App() {
                         "We hired ShubhUtsav for our 25th anniversary celebration, and they exceeded our expectations. The venue decoration and catering arrangements were perfect. Highly recommended!"
                       </p>
                     </motion.div>
-                    
+
                     <motion.div 
                       className="testimonial-card"
                       variants={textVariants}
@@ -341,7 +341,7 @@ function App() {
                     viewport={{ once: true }}
                   >
                     <VideoBackground 
-                      videoUrl={middleVideoUrl}
+                      isYouTube={true}
                       fallbackImageUrl="https://images.unsplash.com/photo-1519225421980-715cb0215aed"
                     />
                   </motion.div>
@@ -383,7 +383,7 @@ function App() {
               </section>
             </>
           } />
-          
+
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
@@ -411,7 +411,7 @@ function App() {
                       </Link>
                     </div>
                   </div>
-                  
+
                   <div className="service-card">
                     <div className="service-img">
                       <img src="https://images.unsplash.com/photo-1464349153735-7db50ed83c84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1098&q=80" alt="Birthday Party" />
@@ -427,7 +427,7 @@ function App() {
                       </Link>
                     </div>
                   </div>
-                  
+
                   <div className="service-card">
                     <div className="service-img">
                       <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="Anniversary" />
@@ -506,7 +506,7 @@ function App() {
                   </a>
                 </div>
               </div>
-              
+
               <div className="footer-section">
                 <h3 className="animated-heading">Quick Links</h3>
                 <ul className="footer-links">
@@ -517,7 +517,7 @@ function App() {
                   <li><Link to="/contact">Contact</Link></li>
                 </ul>
               </div>
-              
+
               <div className="footer-section">
                 <h3 className="animated-heading">Services</h3>
                 <ul className="footer-links">
@@ -528,7 +528,7 @@ function App() {
                   <li><Link to="/services/baby-shower">Baby Showers</Link></li>
                 </ul>
               </div>
-              
+
               <div className="footer-section">
                 <h3 className="animated-heading">Contact Us</h3>
                 <ul className="contact-info">
@@ -547,14 +547,14 @@ function App() {
                 </ul>
               </div>
             </div>
-            
+
             <div className="copyright">
               &copy; 2025 ShubhUtsav. All Rights Reserved.
             </div>
           </div>
         </footer>
 
-        
+
       </div>
     </Router>
   );

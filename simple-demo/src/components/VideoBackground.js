@@ -1,13 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-function VideoBackground({ videoUrl, fallbackImageUrl }) {
+function VideoBackground({ videoUrl, fallbackImageUrl, isYouTube = false }) {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const containerRef = useRef(null);
-  
-  // Use wedding-themed high-quality videos with direct CDN links
-  const weddingVideo = "https://cdn.coverr.co/videos/coverr-indian-wedding-celebration-4584/1080p.mp4";
-  const celebrationVideo = "https://cdn.coverr.co/videos/coverr-wedding-decoration-3672/1080p.mp4";
-  const shortVideo = "https://cdn.coverr.co/videos/coverr-wedding-venue-setup-4481/720p.mp4";
+
+  // YouTube video ID
+  const youtubeVideoId = "JNKZN8uq1H8";
   
   // Use a celebration themed video
   const activeVideo = videoUrl || shortVideo;
@@ -172,7 +170,23 @@ function VideoBackground({ videoUrl, fallbackImageUrl }) {
       {/* Fallback background always visible as base layer */}
       <div style={fallbackStyle}></div>
       
-      {/* Video element will be added programmatically */}
+      {/* YouTube Video */}
+      <iframe
+        src={`https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&mute=1&loop=1&playlist=${youtubeVideoId}&controls=0&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3&playsinline=1`}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '100%',
+          height: '100%',
+          border: 'none',
+          objectFit: 'cover',
+          zIndex: -1
+        }}
+      />
       
       {/* Animated floating particles overlay */}
       <div className="particles-overlay"></div>
