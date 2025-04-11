@@ -17,6 +17,8 @@ import Gallery from './components/Gallery';
 import About from './components/About';
 import ThemeToggle from './components/ThemeToggle';
 import VideoBackground from './components/VideoBackground';
+import ServiceDetail from './components/ServiceDetail';
+import MobileNav from './components/MobileNav';
 import Contact from './pages/Contact';
 
 function App() {
@@ -115,6 +117,9 @@ function App() {
                 </motion.li>
               </ul>
             </nav>
+            
+            {/* Mobile Navigation */}
+            <MobileNav />
           </div>
         </motion.header>
 
@@ -161,7 +166,7 @@ function App() {
               <section id="services" className="section">
                 <div className="container">
                   <motion.h2 
-                    className="section-title"
+                    className="section-title animated-heading"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -240,7 +245,7 @@ function App() {
               <section id="testimonials" className="section testimonials">
                 <div className="container">
                   <motion.h2 
-                    className="section-title"
+                    className="section-title animated-heading"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -325,6 +330,7 @@ function App() {
               <section className="cta">
                 <div className="container">
                   <motion.h2
+                    className="animated-heading"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -356,6 +362,7 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/services/:serviceId" element={<ServiceDetail />} />
         </Routes>
 
         {/* Footer with Gradient Background */}
@@ -382,7 +389,7 @@ function App() {
               </div>
               
               <div className="footer-section">
-                <h3>Quick Links</h3>
+                <h3 className="animated-heading">Quick Links</h3>
                 <ul className="footer-links">
                   <li><Link to="/">Home</Link></li>
                   <li><Link to="/services">Services</Link></li>
@@ -393,7 +400,7 @@ function App() {
               </div>
               
               <div className="footer-section">
-                <h3>Services</h3>
+                <h3 className="animated-heading">Services</h3>
                 <ul className="footer-links">
                   <li><Link to="/services/wedding">Wedding Planning</Link></li>
                   <li><Link to="/services/birthday">Birthday Celebrations</Link></li>
@@ -404,7 +411,7 @@ function App() {
               </div>
               
               <div className="footer-section">
-                <h3>Contact Us</h3>
+                <h3 className="animated-heading">Contact Us</h3>
                 <ul className="contact-info">
                   <li>
                     <FaMapMarkerAlt />

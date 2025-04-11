@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useMotionValue } from 'framer-motion';
 import { toast } from 'react-toastify';
 
 const galleryItems = [
@@ -56,7 +56,28 @@ const galleryItems = [
 function Gallery() {
   const scrollRef = useRef(null);
   const x = useMotionValue(0);
-  const opacity = useTransform(x, [-100, 0, 100], [0, 1, 0]);
+  const [loadedImages, setLoadedImages] = useState({});
+  
+  // Preload images
+  useEffect(() => {
+    galleryItems.forEach(item => {
+      const img = new Image();
+      img.src = item.image;
+      img.onload = () => {
+        setLoadedImages(prev => ({
+          ...prev,
+          [item.id]: true
+        }));
+      };
+      img.onerror = () => {
+        console.error(`Failed to load image: ${item.image}`);
+        toast.error(`Failed to load image: ${item.title}`, {
+          position: "bottom-right",
+          autoClose: 3000
+        });
+      };
+    });
+  }, []);
   
   // Drag container properties
   const container = {
@@ -93,6 +114,22 @@ function Gallery() {
       scrollRef.current.style.cursor = 'grab';
     }
   };
+  
+  // Image loading handler
+  const handleImageLoad = (id) => {
+    setLoadedImages(prev => ({
+      ...prev,
+      [id]: true
+    }));
+  };
+  
+  const handleImageError = (id, title) => {
+    console.error(`Failed to load image: ${title}`);
+    toast.error(`Failed to load image: ${title}`, {
+      position: "bottom-right",
+      autoClose: 3000
+    });
+  };
 
   return (
     <section id="gallery" className="gallery-container section">
@@ -125,10 +162,17 @@ function Gallery() {
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
               onClick={() => handleItemClick(galleryItem.title)}
             >
+              {!loadedImages[galleryItem.id] && (
+                <div className="gallery-image-placeholder">
+                  <div className="loader"></div>
+                </div>
+              )}
               <img 
                 src={galleryItem.image} 
                 alt={galleryItem.title} 
-                className="gallery-image"
+                className={`gallery-image ${loadedImages[galleryItem.id] ? 'loaded' : 'loading'}`}
+                onLoad={() => handleImageLoad(galleryItem.id)}
+                onError={() => handleImageError(galleryItem.id, galleryItem.title)}
               />
               <div className="gallery-overlay">
                 <h3 className="gallery-title">{galleryItem.title}</h3>
@@ -152,10 +196,17 @@ function Gallery() {
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
               onClick={() => handleItemClick(galleryItem.title)}
             >
+              {!loadedImages[galleryItem.id] && (
+                <div className="gallery-image-placeholder">
+                  <div className="loader"></div>
+                </div>
+              )}
               <img 
                 src={galleryItem.image} 
                 alt={galleryItem.title} 
-                className="gallery-image"
+                className={`gallery-image ${loadedImages[galleryItem.id] ? 'loaded' : 'loading'}`}
+                onLoad={() => handleImageLoad(galleryItem.id)}
+                onError={() => handleImageError(galleryItem.id, galleryItem.title)}
               />
               <div className="gallery-overlay">
                 <h3 className="gallery-title">{galleryItem.title}</h3>
