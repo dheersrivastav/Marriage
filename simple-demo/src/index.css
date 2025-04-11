@@ -1141,9 +1141,19 @@ textarea.form-control {
 }
 
 .dark-mode .testimonial-card {
-  background: rgba(26, 34, 56, 0.8);
-  color: var(--text-light);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(45, 45, 60, 0.9);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .testimonial-text,
+.dark-mode .client-details h4,
+.dark-mode .client-details p {
+  color: #ffffff;
+}
+
+.dark-mode .stars {
+  color: var(--primary-gold);
 }
 
 /* Video background improvements */

@@ -4,10 +4,10 @@ function VideoBackground({ videoUrl, fallbackImageUrl }) {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const containerRef = useRef(null);
   
-  // Use wedding-themed high-quality videos
-  const weddingVideo = "https://player.vimeo.com/progressive_redirect/playback/731930003/rendition/1080p/file.mp4?loc=external"; // Wedding celebration video
-  const celebrationVideo = "https://player.vimeo.com/progressive_redirect/playback/783455773/rendition/1080p/file.mp4?loc=external"; // Another wedding video
-  const shortVideo = "https://player.vimeo.com/progressive_redirect/playback/783455773/rendition/720p/file.mp4?loc=external"; // Wedding decor video
+  // Use wedding-themed high-quality videos with direct CDN links
+  const weddingVideo = "https://cdn.coverr.co/videos/coverr-indian-wedding-celebration-4584/1080p.mp4";
+  const celebrationVideo = "https://cdn.coverr.co/videos/coverr-wedding-decoration-3672/1080p.mp4";
+  const shortVideo = "https://cdn.coverr.co/videos/coverr-wedding-venue-setup-4481/720p.mp4";
   
   // Use a celebration themed video
   const activeVideo = videoUrl || shortVideo;
