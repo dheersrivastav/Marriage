@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { 
+  FaWhatsapp, 
+  FaFacebookF, 
+  FaInstagram, 
+  FaPinterestP, 
+  FaYoutube,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope
+} from 'react-icons/fa';
 import Gallery from './components/Gallery';
 import About from './components/About';
-import ContactForm from './components/ContactForm';
 import ThemeToggle from './components/ThemeToggle';
 import VideoBackground from './components/VideoBackground';
+import Contact from './pages/Contact';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [showSuccessToast, setShowSuccessToast] = useState(false);
   
   // Wedding video URL (you'll need to replace this with your actual video URL)
   const weddingVideoUrl = "https://assets.mixkit.co/videos/preview/mixkit-toast-being-raised-at-a-wedding-ceremony-40009-large.mp4";
@@ -346,41 +355,30 @@ function App() {
           
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={
-            <section className="section">
-              <div className="container">
-                <motion.h2 
-                  className="section-title"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  Contact Us
-                </motion.h2>
-                <motion.p
-                  className="text-center mb-10 max-w-3xl mx-auto"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                >
-                  We'd love to hear from you! Fill out the form below and our team will get back to you as soon as possible.
-                </motion.p>
-                
-                <div className="float">
-                  <ContactForm />
-                </div>
-              </div>
-            </section>
-          } />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
 
-        {/* Footer with Contact Form */}
+        {/* Footer with Gradient Background */}
         <footer id="contact" className="footer">
           <div className="container">
             <div className="footer-grid">
               <div className="footer-section">
                 <div className="footer-logo">Shubh<span>Utsav</span></div>
                 <p>Creating memorable celebrations with elegance and precision. Your vision, our expertise.</p>
+                <div className="social-media-footer">
+                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <FaFacebookF />
+                  </a>
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <FaInstagram />
+                  </a>
+                  <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <FaPinterestP />
+                  </a>
+                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <FaYoutube />
+                  </a>
+                </div>
               </div>
               
               <div className="footer-section">
@@ -409,23 +407,18 @@ function App() {
                 <h3>Contact Us</h3>
                 <ul className="contact-info">
                   <li>
-                    <i className="fas fa-map-marker-alt"></i>
+                    <FaMapMarkerAlt />
                     <span>123 Event Street, Mumbai, India</span>
                   </li>
                   <li>
-                    <i className="fas fa-phone-alt"></i>
+                    <FaPhoneAlt />
                     <span>+91 9876543210</span>
                   </li>
                   <li>
-                    <i className="fas fa-envelope"></i>
+                    <FaEnvelope />
                     <span>info@shubhutsav.com</span>
                   </li>
                 </ul>
-              </div>
-              
-              {/* Contact Form in Footer */}
-              <div className="footer-section">
-                <ContactForm />
               </div>
             </div>
             
@@ -447,7 +440,7 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
         >
-          <i className="fab fa-whatsapp"></i>
+          <FaWhatsapp />
         </motion.a>
       </div>
     </Router>

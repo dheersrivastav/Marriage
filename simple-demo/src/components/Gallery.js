@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { toast } from 'react-toastify';
 
 const galleryItems = [
@@ -54,6 +54,11 @@ const galleryItems = [
 ];
 
 function Gallery() {
+  const scrollRef = useRef(null);
+  const x = useMotionValue(0);
+  const opacity = useTransform(x, [-100, 0, 100], [0, 1, 0]);
+  
+  // Drag container properties
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -75,6 +80,19 @@ function Gallery() {
       autoClose: 2000
     });
   };
+  
+  // Drag behavior
+  const handleDragStart = () => {
+    if (scrollRef.current) {
+      scrollRef.current.style.cursor = 'grabbing';
+    }
+  };
+  
+  const handleDragEnd = () => {
+    if (scrollRef.current) {
+      scrollRef.current.style.cursor = 'grab';
+    }
+  };
 
   return (
     <section id="gallery" className="gallery-container section">
@@ -82,35 +100,70 @@ function Gallery() {
         <h2 className="section-title">Our Gallery</h2>
         <p className="text-center text-gray-600 max-w-3xl mx-auto mb-10">
           Explore our portfolio of memorable events that we've had the privilege to organize and decorate.
+          <br /><span className="text-sm italic mt-2 block text-gray-500">← Drag to see more →</span>
         </p>
         
         <motion.div 
-          className="gallery-grid"
+          ref={scrollRef}
+          className="gallery-scroll"
+          drag="x"
+          dragConstraints={{ left: -1000, right: 0 }}
+          dragElastic={0.05}
+          style={{ x }}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
         >
-          {galleryItems.map((item) => (
+          {galleryItems.map((galleryItem) => (
             <motion.div 
-              key={item.id} 
+              key={galleryItem.id} 
               className="gallery-item"
               variants={item}
-              whileHover={{ y: -10 }}
-              onClick={() => handleItemClick(item.title)}
+              whileHover={{ y: -10, transition: { duration: 0.3 } }}
+              onClick={() => handleItemClick(galleryItem.title)}
             >
               <img 
-                src={item.image} 
-                alt={item.title} 
+                src={galleryItem.image} 
+                alt={galleryItem.title} 
                 className="gallery-image"
               />
               <div className="gallery-overlay">
-                <h3 className="gallery-title">{item.title}</h3>
-                <p className="gallery-caption">{item.caption}</p>
+                <h3 className="gallery-title">{galleryItem.title}</h3>
+                <p className="gallery-caption">{galleryItem.caption}</p>
               </div>
             </motion.div>
           ))}
         </motion.div>
+        
+        {/* Grid View (Alternative Layout) */}
+        <h3 className="text-xl font-semibold mt-16 mb-6 text-center">Grid View</h3>
+        <div className="gallery-grid">
+          {galleryItems.slice(0, 4).map((galleryItem) => (
+            <motion.div 
+              key={`grid-${galleryItem.id}`} 
+              className="gallery-item"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              whileHover={{ y: -10, transition: { duration: 0.3 } }}
+              onClick={() => handleItemClick(galleryItem.title)}
+            >
+              <img 
+                src={galleryItem.image} 
+                alt={galleryItem.title} 
+                className="gallery-image"
+              />
+              <div className="gallery-overlay">
+                <h3 className="gallery-title">{galleryItem.title}</h3>
+                <p className="gallery-caption">{galleryItem.caption}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
