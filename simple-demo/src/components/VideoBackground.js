@@ -5,7 +5,7 @@ function VideoBackground({ videoUrl, fallbackImageUrl, isYouTube = false }) {
   const containerRef = useRef(null);
 
   // YouTube video ID
-  const youtubeVideoId = "JNKZN8uq1H8";
+  const youtubeVideoId = "6BCA0uEfUw4";
 
   return (
     <div ref={containerRef} className="video-container">
