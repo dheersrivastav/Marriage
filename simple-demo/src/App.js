@@ -25,8 +25,9 @@ import Contact from './pages/Contact';
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   
-  // Wedding video URL (you'll need to replace this with your actual video URL)
-  const weddingVideoUrl = "https://assets.mixkit.co/videos/preview/mixkit-toast-being-raised-at-a-wedding-ceremony-40009-large.mp4";
+  // Wedding video URLs
+  const heroVideoUrl = "https://player.vimeo.com/progressive_redirect/playback/731930003/rendition/1080p/file.mp4?loc=external";
+  const middleVideoUrl = "https://player.vimeo.com/progressive_redirect/playback/783455773/rendition/1080p/file.mp4?loc=external";
   // Fallback image if video can't load
   const fallbackImageUrl = "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80";
   
@@ -127,7 +128,7 @@ function App() {
               {/* Hero Section with Video Background */}
               <section id="home" className="hero">
                 {/* Video Background Component */}
-                <VideoBackground videoUrl={weddingVideoUrl} fallbackImageUrl={fallbackImageUrl} />
+                <VideoBackground videoUrl={heroVideoUrl} fallbackImageUrl={fallbackImageUrl} />
                 
                 <div className="container hero-content">
                   <motion.h1 
@@ -325,19 +326,25 @@ function App() {
               <section className="py-20 bg-gradient-to-r from-dark-blue/10 to-royal-gold/10">
                 <div className="container">
                   <motion.h2 
-                    className="section-title mb-12"
+                    className="section-title mb-12 animated-heading"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                   >
                     Our Magical Moments
                   </motion.h2>
-                  <div className="video-showcase relative rounded-xl overflow-hidden shadow-2xl">
+                  <motion.div 
+                    className="video-showcase relative rounded-xl overflow-hidden shadow-2xl"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                  >
                     <VideoBackground 
-                      videoUrl="https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69a27dbc4ff2b87d38afc35f1a9e7c02d&profile_id=164&oauth2_token_id=57447761"
+                      videoUrl={middleVideoUrl}
                       fallbackImageUrl="https://images.unsplash.com/photo-1519225421980-715cb0215aed"
                     />
-                  </div>
+                  </motion.div>
                 </div>
               </section>
 

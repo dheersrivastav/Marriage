@@ -4,10 +4,10 @@ function VideoBackground({ videoUrl, fallbackImageUrl }) {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const containerRef = useRef(null);
   
-  // Use high-quality reliable videos
-  const weddingVideo = "https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"; // Reliable Google-hosted video (high quality)
-  const celebrationVideo = "https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"; // Another reliable Google-hosted video
-  const shortVideo = "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"; // Shorter video for faster loading
+  // Use wedding-themed high-quality videos
+  const weddingVideo = "https://player.vimeo.com/progressive_redirect/playback/731930003/rendition/1080p/file.mp4?loc=external"; // Wedding celebration video
+  const celebrationVideo = "https://player.vimeo.com/progressive_redirect/playback/783455773/rendition/1080p/file.mp4?loc=external"; // Another wedding video
+  const shortVideo = "https://player.vimeo.com/progressive_redirect/playback/783455773/rendition/720p/file.mp4?loc=external"; // Wedding decor video
   
   // Use a celebration themed video
   const activeVideo = videoUrl || shortVideo;
