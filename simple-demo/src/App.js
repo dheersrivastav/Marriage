@@ -95,7 +95,7 @@ function App() {
               className="logo"
               whileHover={{ scale: 1.05 }}
             >
-              <h2>Shubh<span>Utsav</span></h2>
+              <h2>New Basanti<span>Flower Decoration</span></h2>
             </motion.div>
             <nav className="desktop-nav">
               <ul className="nav-links">
@@ -489,7 +489,7 @@ function App() {
           <div className="container">
             <div className="footer-grid">
               <div className="footer-section">
-                <div className="footer-logo">Shubh<span>Utsav</span></div>
+                <div className="footer-logo">New Basanti<span>Flower Decoration</span></div>
                 <p>Creating memorable celebrations with elegance and precision. Your vision, our expertise.</p>
                 <div className="social-media-footer">
                   <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">
@@ -549,7 +549,7 @@ function App() {
             </div>
 
             <div className="copyright">
-              &copy; 2025 ShubhUtsav. All Rights Reserved.
+              &copy; 2025 New Basanti Flower Decoration. All Rights Reserved.
             </div>
           </div>
         </footer>
