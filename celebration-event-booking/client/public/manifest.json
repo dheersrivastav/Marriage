@@ -1,6 +1,6 @@
 {
   "short_name": "Celebration Events",
-  "name": "Celebration Event Booking Platform",
+  "name": "Celebration Events - Premium Event Decoration",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#1A2238",
+  "background_color": "#F5F5DC"
 }

@@ -5,19 +5,19 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        'playfair': ['"Playfair Display"', 'serif'],
-        'poppins': ['Poppins', 'sans-serif'],
-      },
       colors: {
         'royal-gold': '#D4AF37',
         'maroon': '#800020',
-        'blush-pink': '#DE7E96',
-        'dark-blue': '#14213D',
-        'cream': '#F7F3E8',
+        'dark-blue': '#1A2238',
+        'blush-pink': '#F7CAC9',
+        'cream': '#F5F5DC',
       },
-      backgroundImage: {
-        'hero-pattern': "url('/src/assets/hero-bg.jpg')",
+      fontFamily: {
+        'playfair': ['"Playfair Display"', 'serif'],
+        'lato': ['Lato', 'sans-serif'],
+      },
+      boxShadow: {
+        'custom': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
       },
     },
   },
