@@ -1,0 +1,22 @@
+{
+  "name": "celebration-event-booking",
+  "version": "1.0.0",
+  "description": "A celebration event booking platform for weddings, birthdays, and other events",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "server": "nodemon server/index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wedding",
+    "birthday",
+    "event",
+    "booking",
+    "celebration"
+  ],
+  "author": "",
+  "license": "ISC"
+}
