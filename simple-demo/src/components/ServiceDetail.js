@@ -33,6 +33,62 @@ const ServiceDetail = () => {
   // Service data - in a real app this would come from an API/database
   // Using useMemo to prevent the object from being recreated on each render
   const serviceData = useMemo(() => ({
+    corporate: {
+      title: "Corporate Event Services",
+      description: "Professional corporate event planning including conferences, seminars, team building activities, and business celebrations.",
+      longDescription: [
+        "Our corporate event services are designed to help businesses create impactful and memorable events that align with their professional objectives.",
+        "From conferences and seminars to team building activities and annual celebrations, we handle all aspects of corporate event planning with precision and style.",
+        "Our team ensures seamless execution while maintaining the professional standards expected in corporate environments."
+      ],
+      features: [
+        "Conference and seminar setup",
+        "Professional stage and lighting",
+        "Corporate branding integration",
+        "Audio-visual equipment setup",
+        "Business presentation support",
+        "Networking area arrangement",
+        "Corporate catering services"
+      ],
+      timeline: "1-3 months planning period",
+      price: "Starting from ₹50,000",
+      capacity: "50 to 1000+ attendees",
+      images: [
+        "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=2069",
+        "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&q=80&w=2070",
+        "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&q=80&w=2070",
+        "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=2012"
+      ],
+      video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+    },
+    destination: {
+      title: "Destination Event Services",
+      description: "Create unforgettable memories with our destination event planning services at exotic locations across India.",
+      longDescription: [
+        "Transform your celebration into an extraordinary experience with our destination event planning services.",
+        "We handle everything from venue selection at exotic locations to travel arrangements, accommodation, and local vendor coordination.",
+        "Our team's expertise ensures your destination event is seamlessly executed while incorporating local culture and charm."
+      ],
+      features: [
+        "Exotic venue selection",
+        "Travel and accommodation coordination",
+        "Local vendor management",
+        "Cultural entertainment integration",
+        "Guest travel assistance",
+        "Complete event setup and decoration",
+        "Photography and videography services"
+      ],
+      timeline: "3-6 months planning period",
+      price: "Starting from ₹1,50,000",
+      capacity: "50 to 300 guests",
+      images: [
+        "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=1974",
+        "https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&q=80&w=2070",
+        "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=2070",
+        "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=2070"
+      ],
+      video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+    },
     wedding: {
       title: "Wedding Planning Services",
       description: "Our comprehensive wedding planning services are designed to make your special day unforgettable. From traditional ceremonies like haldi and mehndi to modern receptions, we handle every detail with care and precision.",
