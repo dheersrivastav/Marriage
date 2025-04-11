@@ -1790,6 +1790,48 @@ textarea.form-control {
   background-size: 400% 400%;
   animation: gradientOverlayAnimation 15s ease infinite;
   z-index: 0;
+  will-change: background-position;
+  transform: translateZ(0);
+}
+
+/* Enhanced text animations */
+.section-title {
+  background: linear-gradient(90deg, #ff8a00, #e52e71, #ff8a00);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Video showcase styles */
+.video-showcase {
+  aspect-ratio: 16/9;
+  max-height: 70vh;
+  transform: translateZ(0);
+}
+
+/* Performance optimizations */
+.service-card {
+  will-change: transform;
+  transform: translateZ(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover {
+  transform: translateY(-10px) translateZ(0);
+}
+
+/* Improved loading performance */
+img {
+  content-visibility: auto;
 }
 
 /* Particles Overlay */

@@ -321,6 +321,26 @@ function App() {
                 </div>
               </section>
 
+              {/* Video Showcase Section */}
+              <section className="py-20 bg-gradient-to-r from-dark-blue/10 to-royal-gold/10">
+                <div className="container">
+                  <motion.h2 
+                    className="section-title mb-12"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                  >
+                    Our Magical Moments
+                  </motion.h2>
+                  <div className="video-showcase relative rounded-xl overflow-hidden shadow-2xl">
+                    <VideoBackground 
+                      videoUrl="https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69a27dbc4ff2b87d38afc35f1a9e7c02d&profile_id=164&oauth2_token_id=57447761"
+                      fallbackImageUrl="https://images.unsplash.com/photo-1519225421980-715cb0215aed"
+                    />
+                  </div>
+                </div>
+              </section>
+
               {/* Gallery Preview Section */}
               <Gallery />
 
@@ -409,6 +429,38 @@ function App() {
                       <h3>Anniversary Events</h3>
                       <p>Romantic anniversary celebration planning with personalized touches to commemorate your special day.</p>
                       <Link to="/services/anniversary" className="service-link">
+                        Learn More 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                          <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="service-card">
+                    <div className="service-img">
+                      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80&w=1089" alt="Corporate Events" />
+                    </div>
+                    <div className="service-content">
+                      <h3>Corporate Events</h3>
+                      <p>Professional corporate event planning including conferences, seminars, and team building activities.</p>
+                      <Link to="/services/corporate" className="service-link">
+                        Learn More 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                          <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="service-card">
+                    <div className="service-img">
+                      <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=1050" alt="Destination Events" />
+                    </div>
+                    <div className="service-content">
+                      <h3>Destination Events</h3>
+                      <p>Create unforgettable memories with our destination event planning services at exotic locations.</p>
+                      <Link to="/services/destination" className="service-link">
                         Learn More 
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                           <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
