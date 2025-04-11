@@ -493,20 +493,7 @@ function App() {
           </div>
         </footer>
 
-        {/* WhatsApp Button */}
-        <motion.a 
-          href="https://wa.me/919876543210" 
-          className="whatsapp-btn" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1 }}
-        >
-          <FaWhatsapp />
-        </motion.a>
+        
       </div>
     </Router>
   );
