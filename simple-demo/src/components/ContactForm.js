@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
+import { FaWhatsapp } from 'react-icons/fa';
 
 function ContactForm() {
+  // WhatsApp phone number configuration - can be easily updated
+  const WHATSAPP_PHONE = "7318444187"; // Default WhatsApp number
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,26 +25,59 @@ function ContactForm() {
     });
   };
 
+  // Function to send message to WhatsApp
+  const sendToWhatsApp = () => {
+    try {
+      // Format the message for WhatsApp
+      const message = `*New Booking Inquiry from Website*%0A
+*Name:* ${formData.name}%0A
+*Email:* ${formData.email}%0A
+*Phone:* ${formData.phone}%0A
+*Event Type:* ${formData.eventType}%0A
+*Message:* ${formData.message}%0A
+`;
+      
+      // Open WhatsApp with the pre-filled message
+      const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${message}`;
+      window.open(whatsappUrl, '_blank');
+      
+      return true;
+    } catch (error) {
+      console.error("Error sending to WhatsApp:", error);
+      return false;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulating API request
     try {
-      // In a real application, this would be an actual API call
-      // await axios.post('/api/contact', formData);
+      // First attempt to send via WhatsApp
+      const whatsappSuccess = sendToWhatsApp();
       
-      // Simulating network delay
+      // Simulating network delay for form processing
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      toast.success('Your message has been sent successfully!', {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      if (whatsappSuccess) {
+        toast.success('Your message has been sent successfully! Check WhatsApp to complete the conversation.', {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      } else {
+        toast.info('Form submitted! If WhatsApp didn\'t open automatically, please contact us directly.', {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      }
       
       // Reset form
       setFormData({
@@ -51,7 +88,7 @@ function ContactForm() {
         eventType: 'wedding'
       });
     } catch (error) {
-      toast.error('Failed to send message. Please try again.', {
+      toast.error('Failed to send message. Please try contacting us directly.', {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -154,12 +191,24 @@ function ContactForm() {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="submit-btn"
+          className="submit-btn whatsapp-btn"
           type="submit"
           disabled={isSubmitting}
         >
-          {isSubmitting ? 'Sending...' : 'Send Message'}
+          {isSubmitting ? 'Sending...' : (
+            <>
+              <FaWhatsapp className="whatsapp-icon" /> 
+              Send via WhatsApp
+            </>
+          )}
         </motion.button>
+        
+        <p className="contact-note">
+          <small>
+            Your message will be sent to our WhatsApp business number for faster response.
+            We typically respond within 1-2 hours during business hours.
+          </small>
+        </p>
       </form>
     </motion.div>
   );

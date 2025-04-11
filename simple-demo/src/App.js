@@ -19,6 +19,7 @@ import ThemeToggle from './components/ThemeToggle';
 import VideoBackground from './components/VideoBackground';
 import ServiceDetail from './components/ServiceDetail';
 import MobileNav from './components/MobileNav';
+import WhatsAppButton from './components/WhatsAppButton';
 import Contact from './pages/Contact';
 
 function App() {
@@ -53,16 +54,6 @@ function App() {
   };
   
   useEffect(() => {
-    // Show a welcome toast when the page first loads
-    toast.success('Welcome to ShubhUtsav - Your Celebration Partner!', {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    });
-    
     // Apply dark mode class to body when state changes
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
@@ -362,6 +353,66 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/services" element={
+            <section className="services-page">
+              <div className="container py-20">
+                <h1 className="section-title mb-10">Our Services</h1>
+                <p className="text-center mb-16 max-w-3xl mx-auto">
+                  We offer a wide range of celebration services tailored to meet your specific needs.
+                  Explore our popular services below or contact us for custom requirements.
+                </p>
+                <div className="services">
+                  <div className="service-card">
+                    <div className="service-img">
+                      <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="Wedding" />
+                    </div>
+                    <div className="service-content">
+                      <h3>Wedding Planning</h3>
+                      <p>Comprehensive wedding planning services including haldi, mehndi, sangeet, and reception ceremonies.</p>
+                      <Link to="/services/wedding" className="service-link">
+                        Learn More 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                          <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                  
+                  <div className="service-card">
+                    <div className="service-img">
+                      <img src="https://images.unsplash.com/photo-1464349153735-7db50ed83c84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1098&q=80" alt="Birthday Party" />
+                    </div>
+                    <div className="service-content">
+                      <h3>Birthday Celebrations</h3>
+                      <p>Creative birthday party planning for all ages with custom themes and entertainment options.</p>
+                      <Link to="/services/birthday" className="service-link">
+                        Learn More 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                          <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                  
+                  <div className="service-card">
+                    <div className="service-img">
+                      <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80" alt="Anniversary" />
+                    </div>
+                    <div className="service-content">
+                      <h3>Anniversary Events</h3>
+                      <p>Romantic anniversary celebration planning with personalized touches to commemorate your special day.</p>
+                      <Link to="/services/anniversary" className="service-link">
+                        Learn More 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                          <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          } />
           <Route path="/services/:serviceId" element={<ServiceDetail />} />
         </Routes>
 

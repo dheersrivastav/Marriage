@@ -23,7 +23,7 @@ const galleryItems = [
   },
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1522673607200-164d1b7ce1a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80",
+    image: "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Traditional Haldi Ceremony",
     caption: "Beautiful setup for a traditional Haldi celebration"
   },
@@ -35,13 +35,13 @@ const galleryItems = [
   },
   {
     id: 6,
-    image: "https://images.unsplash.com/photo-1594078187505-73ad2d63cd81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+    image: "https://images.pexels.com/photos/1444438/pexels-photo-1444438.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     title: "Car Decoration",
     caption: "Luxury car decorated for wedding departure"
   },
   {
     id: 7,
-    image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+    image: "https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
     title: "Festival Tent Setup",
     caption: "Large elegant tent setup for outdoor celebrations"
   },

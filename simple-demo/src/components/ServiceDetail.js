@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useParams } from 'react-router-dom';
-import { FaArrowLeft, FaCalendarAlt, FaRegClock, FaTag, FaUsers, FaHeart } from 'react-icons/fa';
+import { FaArrowLeft, FaCalendarAlt, FaRegClock, FaTag, FaUsers, FaHeart, FaPlay, FaPause, FaExpand } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
 // Service details component with scrollable gallery
@@ -12,6 +12,9 @@ const ServiceDetail = () => {
   const [loadedImages, setLoadedImages] = useState({});
   const [isFavorite, setIsFavorite] = useState(false);
   const [currentService, setCurrentService] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
+  const videoRef = useRef(null);
   
   // Toggle favorite status
   const toggleFavorite = (serviceTitle) => {
@@ -55,7 +58,8 @@ const ServiceDetail = () => {
         "https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         "https://images.unsplash.com/photo-1519741347686-c1e331ec5a18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         "https://images.unsplash.com/photo-1464047736614-af63643285bf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
-      ]
+      ],
+      video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
     },
     birthday: {
       title: "Birthday Celebration Services",
@@ -82,7 +86,8 @@ const ServiceDetail = () => {
         "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         "https://images.unsplash.com/photo-1533294455009-a77b7557d979?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
-      ]
+      ],
+      video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
     },
     anniversary: {
       title: "Anniversary Celebration Services",
@@ -109,7 +114,92 @@ const ServiceDetail = () => {
         "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         "https://images.unsplash.com/photo-1472653431158-6364773b2fda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
         "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
-      ]
+      ],
+      video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+    },
+    floral: {
+      title: "Floral Arrangement Services",
+      description: "Transform your celebration with stunning floral designs. Our expert florists create breathtaking arrangements that add elegance and charm to any occasion.",
+      longDescription: [
+        "Flowers bring life, color, and fragrance to any celebration. At ShubhUtsav, our floral design team creates stunning arrangements that perfectly complement your event theme and personal style.",
+        "We source the freshest, most vibrant blooms to create everything from elegant centerpieces to elaborate mandap decorations, bridal bouquets, garlands, and venue enhancements.",
+        "Our floral designs incorporate traditional elements with contemporary trends, ensuring your celebration looks and feels magical."
+      ],
+      features: [
+        "Custom floral designs for all occasions",
+        "Premium quality, fresh flowers",
+        "Traditional garlands and malas",
+        "Contemporary centerpieces and installations",
+        "Venue entrance and stage decorations",
+        "Bridal and groom floral accessories",
+        "Eco-friendly and sustainable options"
+      ],
+      timeline: "1-2 weeks planning period recommended",
+      price: "Starting from ₹15,000",
+      capacity: "Any event size",
+      images: [
+        "https://images.pexels.com/photos/11701749/pexels-photo-11701749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/931172/pexels-photo-931172.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/757889/pexels-photo-757889.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/4226878/pexels-photo-4226878.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
+      video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
+    },
+    car: {
+      title: "Car Decoration Services",
+      description: "Make a grand entrance or exit with our elegant car decoration services. We transform vehicles into stunning works of art for weddings and special events.",
+      longDescription: [
+        "Your arrival and departure are key moments in any celebration. Our car decoration service ensures your vehicle becomes an extension of your event's theme and elegance.",
+        "We offer a variety of styles from traditional Indian wedding car decorations with marigolds and roses to contemporary designs with elegant fabrics, ribbons, and personalized elements.",
+        "Each car decoration is crafted with attention to detail, ensuring it photographs beautifully and creates a memorable impression for you and your guests."
+      ],
+      features: [
+        "Customized designs to match event theme",
+        "Fresh floral decorations",
+        "Elegant fabric draping and ribbon work",
+        "LED and fairy light accents",
+        "Personalized name plates and messages",
+        "Complete setup and removal service",
+        "Multiple vehicle options available"
+      ],
+      timeline: "1-3 days planning period",
+      price: "Starting from ₹5,000 per vehicle",
+      capacity: "Any vehicle type",
+      images: [
+        "https://images.pexels.com/photos/1444438/pexels-photo-1444438.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/8250085/pexels-photo-8250085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/2403568/pexels-photo-2403568.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/3826898/pexels-photo-3826898.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
+      video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+    },
+    entertainment: {
+      title: "Live Entertainment Services",
+      description: "Elevate your event with our premium entertainment options. From traditional performers to modern artists, we bring unforgettable experiences to your celebration.",
+      longDescription: [
+        "Entertainment sets the mood and creates memorable moments during your celebration. Our entertainment services bring together the best performers to match your event's theme and energy.",
+        "We offer a wide range of options including classical dancers, live bands, DJs, folk artists, celebrity performers, and specialized acts like fire dancers or LED shows.",
+        "Our team manages all technical requirements, coordination, and scheduling, ensuring seamless performances that will delight you and your guests."
+      ],
+      features: [
+        "Curated selection of professional performers",
+        "Traditional and contemporary options",
+        "Complete sound and lighting arrangements",
+        "Customized performance schedules",
+        "Choreographed special performances",
+        "Celebrity artist bookings",
+        "Interactive entertainment experiences"
+      ],
+      timeline: "1-3 months planning period recommended",
+      price: "Starting from ₹20,000",
+      capacity: "Suitable for any event size",
+      images: [
+        "https://images.pexels.com/photos/2034851/pexels-photo-2034851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/2167140/pexels-photo-2167140.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/2240776/pexels-photo-2240776.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/2959615/pexels-photo-2959615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
+      video: "https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
     }
   }), []);
   
@@ -242,6 +332,73 @@ const ServiceDetail = () => {
           </motion.div>
 
           {/* Service Information */}
+          {/* Video Player */}
+          {currentService.video && (
+            <motion.div 
+              className="service-video-container" 
+              variants={itemVariants}
+            >
+              <h3 className="section-subtitle">Watch Our Service in Action</h3>
+              <div className="video-player">
+                <video 
+                  ref={videoRef}
+                  src={currentService.video} 
+                  className="service-video"
+                  poster={currentService.images[0]}
+                  onClick={() => {
+                    if (videoRef.current) {
+                      if (videoRef.current.paused) {
+                        videoRef.current.play();
+                        setIsPlaying(true);
+                      } else {
+                        videoRef.current.pause();
+                        setIsPlaying(false);
+                      }
+                    }
+                  }}
+                />
+                <div className="video-controls">
+                  <motion.button 
+                    className="video-control-btn play-pause"
+                    onClick={() => {
+                      if (videoRef.current) {
+                        if (videoRef.current.paused) {
+                          videoRef.current.play();
+                          setIsPlaying(true);
+                        } else {
+                          videoRef.current.pause();
+                          setIsPlaying(false);
+                        }
+                      }
+                    }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    {isPlaying ? <FaPause /> : <FaPlay />}
+                  </motion.button>
+                  <motion.button 
+                    className="video-control-btn fullscreen"
+                    onClick={() => {
+                      if (videoRef.current) {
+                        if (videoRef.current.requestFullscreen) {
+                          videoRef.current.requestFullscreen();
+                        } else if (videoRef.current.webkitRequestFullscreen) {
+                          videoRef.current.webkitRequestFullscreen();
+                        } else if (videoRef.current.msRequestFullscreen) {
+                          videoRef.current.msRequestFullscreen();
+                        }
+                      }
+                    }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <FaExpand />
+                  </motion.button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+          
           <motion.div className="service-info" variants={itemVariants}>
             <motion.h1 className="animated-heading">{currentService.title}</motion.h1>
             <motion.p className="service-description">{currentService.description}</motion.p>

@@ -62,7 +62,7 @@ function Contact() {
                     </div>
                     <div className="contact-text">
                       <h4>Address</h4>
-                      <p>123 Event Street, Mumbai, Maharashtra, India</p>
+                      <p>Olanganj, Chaura mata mandir fal vali gali, Jaunpur, Uttar Pradesh, India</p>
                     </div>
                   </motion.li>
                   
@@ -145,9 +145,18 @@ function Contact() {
           >
             <h3 className="text-center my-10">Our Location</h3>
             <div className="map-container">
-              <div className="map-placeholder">
-                <p>Map location will be displayed here.</p>
-                <small>For implementation, integrate Google Maps API or embed an iframe map.</small>
+              <iframe
+                title="ShubhUtsav Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28881.771306372687!2d82.67083177431646!3d25.775534999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3991fc74a59d8def%3A0x7c6e3a5c8d5d1f41!2sOlanganj%2C%20Jaunpur%2C%20Uttar%20Pradesh%20222002!5e0!3m2!1sen!2sin!4v1644361823387!5m2!1sen!2sin"
+                width="100%"
+                height="450"
+                style={{ border: 0, borderRadius: '10px', boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+              <div className="map-overlay">
+                <div className="particles-overlay"></div>
               </div>
             </div>
           </motion.div>
