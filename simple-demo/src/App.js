@@ -534,15 +534,15 @@ function App() {
                 <ul className="contact-info">
                   <li>
                     <FaMapMarkerAlt />
-                    <span>123 Event Street, Mumbai, India</span>
+                    <span>Paramatpur Kalikuti Mahiyar Devi Road, Jaunpur</span>
                   </li>
                   <li>
                     <FaPhoneAlt />
-                    <span>+91 9876543210</span>
+                    <span>+91 7081599511, +91 7007765881</span>
                   </li>
                   <li>
                     <FaEnvelope />
-                    <span>info@shubhutsav.com</span>
+                    <span>sm4419218@gmail.com</span>
                   </li>
                 </ul>
               </div>

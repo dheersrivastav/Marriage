@@ -74,8 +74,12 @@ function Contact() {
                       <FaPhone />
                     </div>
                     <div className="contact-text">
-                      <h4>Phone</h4>
-                      <p>+91 9876543210</p>
+                      <h4>New Basanti Flower Decoration</h4>
+                      <p>Sandeep Mali</p>
+                      <p>+91 7081599511</p>
+                      <p>+91 7007765881</p>
+                      <p>sm4419218@gmail.com</p>
+                      <p>Address: Paramatpur Kalikuti Mahiyar Devi Road, Jaunpur</p>
                     </div>
                   </motion.li>
                   
