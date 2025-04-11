@@ -72,6 +72,13 @@ function App() {
         {/* Theme Toggle Button */}
         <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
         
+        {/* WhatsApp Floating Button for quick contact */}
+        <WhatsAppButton 
+          phoneNumber="7318444187"
+          message="Hello! I'm interested in discussing my event planning needs. Please contact me."
+          position="bottom-right"
+        />
+        
         {/* Toast Container for Notifications */}
         <ToastContainer />
         
