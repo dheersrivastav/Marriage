@@ -534,7 +534,7 @@ function App() {
                 <ul className="contact-info">
                   <li>
                     <FaMapMarkerAlt />
-                    <span>Paramatpur Kalikuti Mahiyar Devi Road, Jaunpur</span>
+                    <span>Address: Paramatpur Kalikuti Mahiyar Devi Road, Jaunpur</span>
                   </li>
                   <li>
                     <FaPhoneAlt />

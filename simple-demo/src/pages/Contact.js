@@ -62,7 +62,7 @@ function Contact() {
                     </div>
                     <div className="contact-text">
                       <h4>Address</h4>
-                      <p>Olanganj, Chaura mata mandir fal vali gali, Jaunpur, Uttar Pradesh, India</p>
+                      <p>Paramatpur Kalikuti Mahiyar Devi Road, Jaunpur</p>
                     </div>
                   </motion.li>
                   
